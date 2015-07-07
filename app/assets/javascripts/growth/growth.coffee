@@ -18,7 +18,7 @@ toggle_add_organisms_area = (e) ->
     $('#AddOrganismsArea').css('top', 50)
     $('#ToggleAddOrganismsArea').children('i').attr('class', 'fa fa-angle-up')
   else
-    $('#AddOrganismsArea').css('top', -110)
+    $('#AddOrganismsArea').css('top', -210)
     $('#ToggleAddOrganismsArea').children('i').attr('class', 'fa fa-angle-down')
     
 add_organism = (e) ->
