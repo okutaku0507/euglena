@@ -134,7 +134,6 @@ organisms_cleaner = () ->
   growth_count = parseInt($('body').attr('data-growth-count'))
   num = ($('#GrowthSpace').find('.organism').length - growth_count)
   $('#GrowthSpace').find('.organism').each (idx) ->
-    alert idx
     if idx < num
       $(this).fadeOut(2000).remove()
   
