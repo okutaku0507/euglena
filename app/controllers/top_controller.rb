@@ -3,6 +3,6 @@ class TopController < ApplicationController
   end
   
   def growth
-    @organisms = [ Organism.where(name: 'euglena').first ] #Organism.order('id desc')
+    @organisms = [ Organism.where(description: 'euglena').first ] #Organism.order('id desc')
   end
 end
