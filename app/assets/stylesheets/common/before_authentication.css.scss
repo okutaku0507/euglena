@@ -5,6 +5,11 @@ body#before_authentication {
   background-attachment: fixed;
   background-size: cover;
   height: 100%;
+  
+  div#footer {
+    color: #FFF;
+    a { color: #FFF; }
+  }
 }
 
 #TopPage {

@@ -10,6 +10,8 @@ $(document).on 'page:change ready page:load', (e) ->
       add_organism_to_growth_space(e)
     $('#GrowthSpace').find('.organism').each () ->
       actuate_organism_move_and_multiplication($(this))
+    $('#AddOrganismsArea').on 'click', ' #ResetGrowthSpace', (e) ->
+      $('#GrowthSpace').find('.organism').fadeOut(1000)
       
 toggle_add_organisms_area = (e) ->
   if (parseInt($('#AddOrganismsArea').css('top')) < 0)
@@ -87,6 +89,7 @@ actuate_organism_move_and_multiplication = (obj) ->
 organism_move_and_multiplication = (obj, timer, count) ->
   unless $(this)
     clearInterval(timer)
+  growth_count = parseInt($('body').attr('data-growth-count'))
   micromotion_degree = parseInt(obj.attr('data-micromotion-degree'))
   step_length = parseInt(obj.attr('data-step-length'))
   multiplication_speed = parseInt(obj.attr('data-multiplication-speed'))
@@ -105,7 +108,7 @@ organism_move_and_multiplication = (obj, timer, count) ->
   if innerWidth < horizontal
     horizontal = innerWidth
   if count != 0 && (count % multiplication_speed) == 0
-    if ($('#GrowthSpace').find('.organism').length < 50) && !obj.hasClass('apoptosis')
+    if ($('#GrowthSpace').find('.organism').length < growth_count) && !obj.hasClass('apoptosis')
       organism_multiplication(obj)
     obj.css('transform', "rotate(#{Math.floor( Math.random() * micromotion_degree )}deg)";).
       css({"top":"#{vertical}px","left": "#{horizontal}px"})
@@ -114,7 +117,7 @@ organism_move_and_multiplication = (obj, timer, count) ->
   else
     obj.css('transform', "rotate(#{Math.floor( Math.random() * micromotion_degree )}deg)";).
       css({"top":"#{vertical}px","left": "#{horizontal}px"})
-  if 50 < $('#GrowthSpace').find('.organism').length
+  if growth_count < $('#GrowthSpace').find('.organism').length
     organisms_cleaner()
     
 organism_multiplication = (obj) ->
@@ -128,7 +131,8 @@ apoptosis = (obj, timer) ->
     obj.fadeOut(2000).remove()
 
 organisms_cleaner = () ->
-  num = ($('#GrowthSpace').find('.organism').length - 50)
+  growth_count = parseInt($('body').attr('data-growth-count'))
+  num = ($('#GrowthSpace').find('.organism').length - growth_count)
   $('#GrowthSpace').find('.organism').each (idx) ->
     alert idx
     if idx < num

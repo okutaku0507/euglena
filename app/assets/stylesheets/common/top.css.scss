@@ -52,6 +52,21 @@
     right: 10px;
     cursor: pointer;
   }
+  p#ResetGrowthSpace {
+    margin: 0;
+    clear: both;
+    font-size: 25px;
+    line-height: 20px;
+    text-align: right;
+    position: absolute;
+    bottom: 5px;
+    left: 10px;
+    cursor: pointer;
+    font-size: 12px;
+    padding: 2px 5px;
+    border-radius: 3px;
+    border: 2px solid #fff;
+  }
 }
 
 #GrowthSpace {

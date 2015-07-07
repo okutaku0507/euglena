@@ -21,7 +21,7 @@
   <meta property="og:site_name" content="Euglena"/>
 </head>
 <% before_authentication = controller.controller_name == 'top' && controller.action_name == 'index' %>
-<body id="<%= 'before_authentication' if before_authentication %>">
+<body id="<%= 'before_authentication' if before_authentication %>" data-growth-count="<%= request.smart_phone? ? 25 : 50 %>">
   <%= render "shared/header" unless before_authentication %>
   <div id="container" style="<%= 'margin: 0;' if before_authentication %>">
     <%= flash_messages %>
