@@ -3,6 +3,6 @@ class TopController < ApplicationController
   end
   
   def growth
-    @organisms = Organism.order('id desc')
+#    @organisms = Organism.order('id desc')
   end
 end
