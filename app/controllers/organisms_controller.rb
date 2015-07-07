@@ -3,6 +3,21 @@ class OrganismsController < ApplicationController
     @organism = Organism.find(params[:id])
     send_image if params[:format].in?(["jpg", "png", "gif"])
   end
+  
+  def create
+    if params[:uploaded_image].present?
+      @organism = Organism.new
+      @organism.uploaded_image = params[:uploaded_image]
+      if @organism.save!
+        host = request.host + (Rails.env.development? ? ":3000" : "")
+        render json: [ @organism.id, @organism.extension ]
+      else
+        render json: [ 'error' ]
+      end
+    else
+      render json: [ 'error' ]
+    end
+  end
 
   private
   def send_image

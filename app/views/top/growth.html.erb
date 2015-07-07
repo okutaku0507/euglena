@@ -3,9 +3,19 @@
     <p class="add_button"><%= fa_icon('plus') %></p>
     <%= image_tag('image_loader.gif', class: 'loader') %>
   </div>
-  <% @organisms.each do |organism| %>
-    <div class="box organism_box"><%= organism_image_tag(organism) %></div>
-  <% end %>
+  <div id="OrganismsArea">
+    <% @organisms.each do |organism| %>
+      <div class="box organism_box" data-image-url="<%= organism_path(organism, format: organism.extension) %>">
+        <%= organism_image_tag(organism) %>
+      </div>
+    <% end %>
+  </div>
   <p id="ToggleAddOrganismsArea"><%= fa_icon('angle-down') %></p>
+  <%= form_tag '' do %>
+    <%= file_field_tag 'uploaded_image', style: 'display: none; position: absolute;
+      top: -500000px; left: -500000px;' %>
+  <% end %>
 </div>
-<div id="GrowthSpace"></div>
+<div id="GrowthSpace">
+  <%= image_tag('euglena.png', class: 'organism', style: '') %>
+</div>

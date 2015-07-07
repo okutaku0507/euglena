@@ -4,10 +4,20 @@ default: &default
   pool: 5
 development:
   <<: *default
+  adapter: mysql2
   database: euglena_development
+  encoding: utf8
+  username: root
+  password:
+  socket: /tmp/mysql.sock
 test:
   <<: *default
+  adapter: mysql2
   database: euglena_test
+  encoding: utf8
+  socket: /tmp/mysql.sock
+  username: root
+  password:
 production:
   <<: *default
   database: euglena_production

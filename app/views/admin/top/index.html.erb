@@ -1,0 +1,12 @@
+<div id="AdminOrganismsArea">
+  <% @organisms.each do |organism| %>
+    <div class="box">
+      <%= organism_image_tag(organism) %>
+      <p class="text-center mt5">
+        <%= content_tag(:a, '削除'.html_safe, href: admin_organism_path(organism),
+          data: { method: :delete, confirm: "本当に削除してよろしいですか?" },
+          :class => 'btn btn-default btn-danger', role: 'button') %>
+      </p>
+    </div>
+  <% end %>
+</div>

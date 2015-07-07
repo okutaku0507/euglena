@@ -4,13 +4,14 @@
 #
 #  id                 :integer          not null, primary key
 #  content_type       :string(255)
-#  data               :binary(16777215)
+#  data               :binary(65535)
 #  description        :text(65535)
 #  micromotion_degree :integer          default(10), not null
 #  step_length        :integer          default(10), not null
 #  created_at         :datetime         not null
 #  updated_at         :datetime         not null
 #
+
 require 'rmagick'
 class Organism < ActiveRecord::Base
   attr_reader :uploaded_image

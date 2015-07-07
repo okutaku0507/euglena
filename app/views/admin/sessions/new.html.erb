@@ -1,0 +1,15 @@
+<% @title = '管理者ログイン' %>
+
+<div class="row">
+  <div class="panel panel-default col-xs-4 col-xs-offset-4">
+    <div class="panel-body">
+      <%= form_for @form, url: [ :admin, :session], html: { class: "form-signin", role: "form", :style => "height: 250px;" } do |f| %>
+        <h2 class="form-signin-heading"><%= @title %></h2>
+        <%= f.text_field :login, class: 'form-control',
+          placeholder: 'ログイン名', required: true, autofocus: true %>
+        <%= f.password_field :password, class: 'form-control', placeholder: 'パスワード', required: true %>
+        <button class="btn btn-lg btn-primary btn-block" type="submit">ログイン</button>
+      <% end %>
+    </div>
+  </div>
+</div>

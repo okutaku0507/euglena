@@ -1,0 +1,18 @@
+<div class="navbar navbar-default navbar-static-top header-navbar mb10">
+  <h1 class="ma0">
+    <%= link_to "Euglena Admin", :root, :class => "navbar-brand" %>
+  </h1>
+  <a class="btn btn-navbar navbar-toggle mr15 ml0" data-toggle="collapse" data-target=".navbar-collapse"
+    style="background: #43af34 !important; border: none;">
+    <span class="icon-bar" style="background: #DDD;"></span>
+    <span class="icon-bar" style="background: #DDD;"></span>
+    <span class="icon-bar" style="background: #DDD;"></span>
+  </a>
+  <div class="navbar-float-clear clear"></div>
+  <div class="navbar-collapse collapse navbar-responsive-collapse" >
+    <ul class="nav navbar-nav">
+      <li><%= link_to fa_icon('sign-out', text: 'ログアウト'), [ :admin, :session ], method: :delete,
+                data: { confirm: '本当にログアウトしますか?' } if current_admin %></li>
+    </ul>
+  </div>
+</div>

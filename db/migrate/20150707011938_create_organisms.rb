@@ -7,6 +7,7 @@ class CreateOrganisms < ActiveRecord::Migration
       t.text :description
       t.integer :micromotion_degree, null: false, default: 10
       t.integer :step_length, null: false, default: 10              # 単位はpx
+      t.integer :multiplication_speed, null: false, default: 3      #　増殖速度単位は秒 (s)
 
       t.timestamps null: false
     end

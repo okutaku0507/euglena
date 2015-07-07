@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta name="viewport" content="width=device-width">
+    <title><%= page_title %></title>
+    <%= stylesheet_link_tag 'application', media: 'all' %>
+    <%= javascript_include_tag 'application' %>
+    <%= favicon_link_tag %>
+    <%= csrf_meta_tags %>
+  </head>
+  <body>
+    <%= render "admin/shared/header" %>
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-12">
+          <%= flash_messages %>
+          <%= yield %>
+        </div>
+      </div><!--/row-->
+      <%= render 'shared/footer'%>
+    </div> <!-- /container -->
+  </body>
+</html>
