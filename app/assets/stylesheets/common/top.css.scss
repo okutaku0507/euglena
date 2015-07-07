@@ -68,5 +68,8 @@
     margin-top: -25px;
     margin-left: -25px;
     position: absolute;
+    -webkit-transition: all 1.0s ease;
+    -o-transition: all 1.0s ease;
+    transition: all 1.0s ease;
   }
 }

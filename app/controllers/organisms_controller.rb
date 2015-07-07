@@ -10,7 +10,8 @@ class OrganismsController < ApplicationController
       @organism.uploaded_image = params[:uploaded_image]
       if @organism.save!
         host = request.host + (Rails.env.development? ? ":3000" : "")
-        render json: [ @organism.id, @organism.extension ]
+        render json: [ @organism.id, @organism.extension,
+          @organism.micromotion_degree, @organism.step_length, @organism.multiplication_speed ]
       else
         render json: [ 'error' ]
       end

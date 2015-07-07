@@ -2,14 +2,15 @@
 #
 # Table name: organisms
 #
-#  id                 :integer          not null, primary key
-#  content_type       :string(255)
-#  data               :binary(65535)
-#  description        :text(65535)
-#  micromotion_degree :integer          default(10), not null
-#  step_length        :integer          default(10), not null
-#  created_at         :datetime         not null
-#  updated_at         :datetime         not null
+#  id                   :integer          not null, primary key
+#  content_type         :string(255)
+#  data                 :binary(16777215)
+#  description          :text(65535)
+#  micromotion_degree   :integer          default(90), not null
+#  step_length          :integer          default(50), not null
+#  multiplication_speed :integer          default(5), not null
+#  created_at           :datetime         not null
+#  updated_at           :datetime         not null
 #
 
 FactoryGirl.define do

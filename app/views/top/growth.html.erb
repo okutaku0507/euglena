@@ -6,7 +6,8 @@
   <div id="OrganismsArea">
     <% @organisms.each do |organism| %>
       <div class="box organism_box" data-image-url="<%= organism_path(organism, format: organism.extension) %>">
-        <%= organism_image_tag(organism) %>
+        <%= organism_image_tag(organism, 'data-micromotion-degree' => organism.micromotion_degree,
+          'data-step-length' => organism.step_length, 'data-multiplication-speed' => organism.multiplication_speed) %>
       </div>
     <% end %>
   </div>
@@ -17,5 +18,6 @@
   <% end %>
 </div>
 <div id="GrowthSpace">
-  <%= image_tag('euglena.png', class: 'organism', style: '') %>
+  <%= image_tag('euglena.png', class: 'organism', style: '', 'data-micromotion-degree' => '90',
+    'data-step-length' => '50', 'data-multiplication-speed' => '3') %>
 </div>

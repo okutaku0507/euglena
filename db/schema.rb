@@ -13,26 +13,24 @@
 
 ActiveRecord::Schema.define(version: 20150707020830) do
 
-  # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
-
   create_table "administrators", force: :cascade do |t|
-    t.string   "login_name",      null: false
-    t.string   "hashed_password", null: false
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.string   "login_name",      limit: 255, null: false
+    t.string   "hashed_password", limit: 255, null: false
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
   end
 
   add_index "administrators", ["login_name"], name: "index_administrators_on_login_name", using: :btree
 
   create_table "organisms", force: :cascade do |t|
-    t.string   "content_type"
-    t.binary   "data"
-    t.text     "description"
-    t.integer  "micromotion_degree", default: 10, null: false
-    t.integer  "step_length",        default: 10, null: false
-    t.datetime "created_at",                      null: false
-    t.datetime "updated_at",                      null: false
+    t.string   "content_type",         limit: 255
+    t.binary   "data",                 limit: 16777215
+    t.text     "description",          limit: 65535
+    t.integer  "micromotion_degree",   limit: 4,        default: 90, null: false
+    t.integer  "step_length",          limit: 4,        default: 50, null: false
+    t.integer  "multiplication_speed", limit: 4,        default: 5,  null: false
+    t.datetime "created_at",                                         null: false
+    t.datetime "updated_at",                                         null: false
   end
 
 end
