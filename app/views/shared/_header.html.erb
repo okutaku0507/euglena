@@ -1,0 +1,29 @@
+<div class="navbar navbar-default navbar-static-top header-navbar mb10">
+  <h1 class="ma0">
+    <%= link_to "Euglena", :root, :class => "navbar-brand" %>
+  </h1>
+  <a class="btn btn-navbar navbar-toggle mr15 ml0" data-toggle="collapse" data-target=".navbar-collapse"
+    style="background: #43af34 !important; border: none;">
+    <span class="icon-bar" style="background: #DDD;"></span>
+    <span class="icon-bar" style="background: #DDD;"></span>
+    <span class="icon-bar" style="background: #DDD;"></span>
+  </a>
+  <div class="navbar-float-clear clear"></div>
+  <div class="navbar-collapse collapse navbar-responsive-collapse" >
+    <ul class="nav navbar-nav">
+      <li><%= link_to fa_icon('question-circle', text: 'Euglenaとは'), :about %></li>
+      <li>
+        <a href="http://www.facebook.com/share.php?u=#" onclick="window.open(encodeURI(decodeURI(this.href)), 'FBwindow', 'width=554, height=470, menubar=no, toolbar=no, scrollbars=yes'); return false;" rel="nofollow">
+          <%= fa_icon('facebook-official', text: 'Facebook シェア') %>
+        </a>
+      </li>
+      <li>
+        <a href="http://twitter.com/share?text=%e8%87%aa%e5%88%86%e3%81%ae%e5%a5%bd%e3%81%8d%e3%81%aa%e7%94%9f%e3%81%8d%e7%89%a9%e3%81%8c%e5%a2%97%e3%81%88%e3%81%a0%e3%81%99%ef%bc%81%ef%bc%9f%e7%94%9f%e7%89%a9%e3%81%ae%e6%96%b0%e3%81%97%e3%81%84%e5%ad%a6%e3%81%b3%e3%81%ae%e5%bd%a2%e3%80%82Euglena%20%28%e3%83%a6%e3%83%bc%e3%82%b0%e3%83%ac%e3%83%8a%29%20by%20@takuya_okuhara&url=#"
+          onClick="window.open(encodeURI(decodeURI(this.href)), 'tweetwindow',
+          'width=650, height=470, personalbar=0, toolbar=0, scrollbars=1, sizable=1');return false;" rel="nofollow">
+          <%= fa_icon('twitter', text: 'Twitter シェア') %>
+        </a>
+      </li>
+    </ul>
+  </div>
+</div>

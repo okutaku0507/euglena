@@ -1,0 +1,11 @@
+<div id="AddOrganismsArea">
+  <div id="AddOrganismImageLoader" class="box">
+    <p class="add_button"><%= fa_icon('plus') %></p>
+    <%= image_tag('image_loader.gif', class: 'loader') %>
+  </div>
+  <% @organisms.each do |organism| %>
+    <div class="box organism_box"><%= organism_image_tag(organism) %></div>
+  <% end %>
+  <p id="ToggleAddOrganismsArea"><%= fa_icon('angle-down') %></p>
+</div>
+<div id="GrowthSpace"></div>

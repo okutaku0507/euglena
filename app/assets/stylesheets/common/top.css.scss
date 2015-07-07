@@ -1,0 +1,58 @@
+#AddOrganismsArea {
+  width: 98%;
+  border-left: 2px solid #fff;
+  border-bottom: 2px solid #fff;
+  border-right: 2px solid #fff;
+  height: 200px;
+  overflow-y: auto;
+  -webkit-transition: all 1.0s ease;
+  -o-transition: all 1.0s ease;
+  transition: all 1.0s ease;
+  position: absolute;
+  top: -110px;
+  left: 1%;
+  padding-bottom: 10px;
+
+  div.box {
+    height: 100px;
+    width: 100px;
+    margin: 10px;
+    float: left;
+    border-radius: 2px;
+    box-shadow: 2px 2px 0px 2px #EEEEEE;
+    border: 1px solid #FFF;
+    cursor: pointer;
+  }
+  #AddOrganismImageLoader {
+    background: #FFFFFF;
+    img.loader {
+      height: 40px;
+      margin: 30px;
+      display: none;
+    }
+    p.add_button {
+      font-size: 50px;
+      vertical-align: middle;
+      text-align: center;
+      padding: 0;
+      margin: 0;
+      line-height: 100px;
+      color: #F1F1F1;
+    }
+  }
+  p#ToggleAddOrganismsArea {
+    margin: 0;
+    clear: both;
+    font-size: 25px;
+    line-height: 20px;
+    text-align: right;
+    position: absolute;
+    bottom: 5px;
+    right: 10px;
+    cursor: pointer;
+  }
+}
+
+#GrowthSpace {
+  width: 100%;
+}
