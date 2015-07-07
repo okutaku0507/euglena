@@ -20,9 +20,10 @@
   <meta property="og:type" content="website"/>
   <meta property="og:site_name" content="Euglena"/>
 </head>
-<body>
-  <%= render "shared/header" %>
-  <div id="container">
+<% before_authentication = controller.controller_name == 'top' && controller.action_name == 'index' %>
+<body id="<%= 'before_authentication' if before_authentication %>">
+  <%= render "shared/header" unless before_authentication %>
+  <div id="container" style="<%= 'margin: 0;' if before_authentication %>">
     <%= flash_messages %>
     <%= yield %>
   </div>

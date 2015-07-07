@@ -56,9 +56,13 @@
 
 #GrowthSpace {
   width: 100%;
-  position: relative;
+  position: absolute;
+  top: 0;
+  left: 0;
   height: 100%;
   z-index: 0;
+  overflow-x: hidden;
+  clear: both;
   
   img.organism {
     width: 50px;

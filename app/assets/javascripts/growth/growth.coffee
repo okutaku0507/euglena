@@ -31,6 +31,7 @@ add_organism_to_growth_space = (e) ->
     organism = "<img class='organism' style='' src='#{url}' alt=''
       data-micromotion-degree='#{micromotion_degree}' data-step-length='#{step_length}'
       data-multiplication-speed='#{multiplication_speed}'>"
+    $('#GrowthSpace').find('.organism').addClass('apoptosis')
     actuate_organism_move_and_multiplication($(organism).appendTo($('#GrowthSpace')))
   
 upload_organism = (e) ->
@@ -59,6 +60,7 @@ upload_organism = (e) ->
               data-micromotion-degree='#{micromotion_degree}' data-step-length='#{step_length}'
               data-multiplication-speed='#{multiplication_speed}'>"
             $('#OrganismsArea').prepend(html)
+            $('#GrowthSpace').find('.organism').addClass('apoptosis')
             actuate_organism_move_and_multiplication($(organism).appendTo($('#GrowthSpace')))
             $('p.add_button').show()
             $('img.loader').hide()
@@ -77,9 +79,10 @@ upload_organism = (e) ->
     
 actuate_organism_move_and_multiplication = (obj) ->
   count = 0
+  t = (800 + Math.floor( Math.random() * 1200 ))
   timer = setInterval ->
     organism_move_and_multiplication(obj, timer, count++)
-  , (1000)
+  , (t)
   
 organism_move_and_multiplication = (obj, timer, count) ->
   unless $(this)
@@ -87,31 +90,31 @@ organism_move_and_multiplication = (obj, timer, count) ->
   micromotion_degree = parseInt(obj.attr('data-micromotion-degree'))
   step_length = parseInt(obj.attr('data-step-length'))
   multiplication_speed = parseInt(obj.attr('data-multiplication-speed'))
-  outerHeight = parseInt($('#GrowthSpace').outerHeight)
-  outerWidth = parseInt($('#GrowthSpace').outerWidth)
+  innerHeight = parseInt($('#GrowthSpace').innerHeight)
+  innerWidth = parseInt($('#GrowthSpace').innerWidth)
   top = parseInt(obj.css('top'))
   left = parseInt(obj.css('left'))
   vertical = [(top + step_length), (top - step_length)][Math.floor( Math.random() * 2 )]
   if vertical < 0
     vertical = 0
-  if outerHeight < vertical
-    vertical = outerHeight
+  if innerHeight < vertical
+    vertical = innerHeight
   horizontal = [(left + step_length), (left - step_length)][Math.floor( Math.random() * 2 )]
   if horizontal < 0
     horizontal = 0
-  if outerWidth < horizontal
-    horizontal = outerWidth
+  if innerWidth < horizontal
+    horizontal = innerWidth
   if count != 0 && (count % multiplication_speed) == 0
-    if $('#GrowthSpace').find('.organism').length < 100
+    if ($('#GrowthSpace').find('.organism').length < 80) && !obj.hasClass('apoptosis')
       organism_multiplication(obj)
     obj.css('transform', "rotate(#{Math.floor( Math.random() * micromotion_degree )}deg)";).
       css({"top":"#{vertical}px","left": "#{horizontal}px"})
-    if 3 < count
+    if (3 < count || obj.hasClass('apoptosis')) && (10 < $('#GrowthSpace').find('.organism').not('.apoptosis').length)
       apoptosis(obj, timer)
   else
     obj.css('transform', "rotate(#{Math.floor( Math.random() * micromotion_degree )}deg)";).
       css({"top":"#{vertical}px","left": "#{horizontal}px"})
-  if 100 < $('#GrowthSpace').find('.organism').length
+  if 80 < $('#GrowthSpace').find('.organism').length
     organisms_cleaner()
     
 organism_multiplication = (obj) ->
@@ -125,7 +128,7 @@ apoptosis = (obj, timer) ->
     obj.fadeOut(2000).remove()
 
 organisms_cleaner = () ->
-  num = ($('#GrowthSpace').find('.organism').length - 100)
+  num = ($('#GrowthSpace').find('.organism').length - 80)
   $('#GrowthSpace').find('.organism').each (idx) ->
     alert idx
     if idx < num
