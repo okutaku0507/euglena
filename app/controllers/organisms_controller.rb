@@ -3,7 +3,6 @@ class OrganismsController < ApplicationController
     @organism = Organism.find(params[:id])
     if params[:format].in?(["jpg", "png", "gif"])
       send_image
-      @organism.destroy
     end
   end
   
