@@ -1,9 +1,7 @@
 class OrganismsController < ApplicationController
   def show
     @organism = Organism.find(params[:id])
-    if params[:format].in?(["jpg", "png", "gif"])
-      send_image
-    end
+    send_image if params[:format].in?(["jpg", "png", "gif"])
   end
   
   def create
