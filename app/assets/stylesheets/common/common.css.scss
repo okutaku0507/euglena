@@ -21,6 +21,7 @@ div#header {
   width: 100%;
   border-bottom: 1px solid $base_gray;
   background: #fff;
+  z-index: 1000;
 
   div#header_bar {
     width: 90%;
