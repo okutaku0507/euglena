@@ -35,7 +35,7 @@ add_organism_to_growth_space = (e) ->
   step_length = parseInt($(e.target).attr('data-step-length'))
   multiplication_speed = parseInt($(e.target).attr('data-multiplication-speed'))
   if url && confirm('これを増殖させますか？')
-    organism = "<img class='organism' style='' src='#{url}' alt=''
+    organism = "<img class='organism new_organism' style='' src='#{url}' alt=''
       data-micromotion-degree='#{micromotion_degree}' data-step-length='#{step_length}'
       data-multiplication-speed='#{multiplication_speed}'>"
     $('#GrowthSpace').find('.organism').addClass('apoptosis')
@@ -65,7 +65,7 @@ upload_organism = (e) ->
             html = "<div class='box organism_box' data-image-url='/organisms/#{id}.#{format}'>
               <img alt='organism_image' src='/organisms/#{id}.#{format}' data-micromotion-degree='#{micromotion_degree}'
               data-step-length='#{step_length}' data-multiplication-speed='#{multiplication_speed}'></div>"
-            organism = "<img class='organism' style='' src='/organisms/#{id}.#{format}' alt=''
+            organism = "<img class='organism new_organism' style='' src='/organisms/#{id}.#{format}' alt=''
               data-micromotion-degree='#{micromotion_degree}' data-step-length='#{step_length}'
               data-multiplication-speed='#{multiplication_speed}'>"
             $('#OrganismsArea').prepend(html)
@@ -115,12 +115,15 @@ organism_move_and_multiplication = (obj, timer, count) ->
   if innerWidth < horizontal
     horizontal = innerWidth
   if count != 0 && (count % multiplication_speed) == 0
-    if ($('#GrowthSpace').find('.organism').length < growth_count) && (!obj.hasClass('apoptosis') || Math.floor( Math.random() * 1 ) == 0)
+    if (($('#GrowthSpace').find('.organism').length < growth_count) && (!obj.hasClass('apoptosis') || Math.floor( Math.random() * 1 ) == 0)) || obj.hasClass('new_organism')
       organism_multiplication(obj)
+      if 10 < count && obj.hasClass('new_organism')
+        obj.removeClass('new_organism')
     obj.css('transform', "rotate(#{Math.floor( Math.random() * micromotion_degree )}deg)";).
       css({"top":"#{vertical}px","left": "#{horizontal}px"})
     if ((3 < count && ($('#GrowthSpace').find('.apoptosis').length == 0 || ($('#GrowthSpace').find('.apoptosis').length && !obj.hasClass('apoptosis')))) || obj.hasClass('apoptosis')) || (obj.hasClass('apoptosis') && $('#GrowthSpace').find('.organism').not('.apoptosis').length < 10)
-      apoptosis(obj, timer)
+      if !obj.hasClass('new_organism')
+        apoptosis(obj, timer)
   else
     obj.css('transform', "rotate(#{Math.floor( Math.random() * micromotion_degree )}deg)";).
       css({"top":"#{vertical}px","left": "#{horizontal}px"})

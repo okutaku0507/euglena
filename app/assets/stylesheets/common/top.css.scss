@@ -96,5 +96,11 @@
     -webkit-transition: all 1.0s ease;
     -o-transition: all 1.0s ease;
     transition: all 1.0s ease;
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -khtml-user-select: none;
+    -webkit-user-drag: none;
+    -khtml-user-drag: none;
   }
 }
