@@ -57,7 +57,9 @@ upload_organism = (e) ->
             micromotion_degree = data[2]
             step_length = data[3]
             multiplication_speed = data[4]
-            html = "<div class='box organism_box'><img alt='organism_image' src='/organisms/#{id}.#{format}'></div>"
+            html = "<div class='box organism_box' data-image-url='/organisms/#{id}.#{format}'>
+              <img alt='organism_image' src='/organisms/#{id}.#{format}' data-micromotion-degree='#{micromotion_degree}'
+              data-step-length='#{step_length}' data-multiplication-speed='#{multiplication_speed}'></div>"
             organism = "<img class='organism' style='' src='/organisms/#{id}.#{format}' alt=''
               data-micromotion-degree='#{micromotion_degree}' data-step-length='#{step_length}'
               data-multiplication-speed='#{multiplication_speed}'>"
